@@ -27,19 +27,19 @@
                 <h2 STYLE="text-align: center;">Jogo do Galo</h2>
 
                 <div class="caixa-geral">
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
+                    <div id="cx1" class="caixa-jogo-galo" onclick="mudarElemento('cx1')"></div>
+                    <div id="cx2" class="caixa-jogo-galo" onclick="mudarElemento('cx2')"></div>
+                    <div id="cx3" class="caixa-jogo-galo" onclick="mudarElemento('cx3')"></div>
                     <div style="clear:both;"></div>
 
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
+                    <div id="cx4" class="caixa-jogo-galo" onclick="mudarElemento('cx4')"></div>
+                    <div id="cx5" class="caixa-jogo-galo" onclick="mudarElemento('cx5')"></div>
+                    <div id="cx6" class="caixa-jogo-galo" onclick="mudarElemento('cx6')"></div>
                     <div style="clear:both;"></div>
 
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
-                    <div class="caixa-jogo-galo"></div>
+                    <div id="cx7" class="caixa-jogo-galo" onclick="mudarElemento('cx7')"></div>
+                    <div id="cx8" class="caixa-jogo-galo" onclick="mudarElemento('cx8')"></div>
+                    <div id="cx9" class="caixa-jogo-galo" onclick="mudarElemento('cx9')"></div>
                     <div style="clear:both;"></div>
                 </div>
             </div>
@@ -55,5 +55,83 @@
     </DIV> 
     
     <script src="./script.js"></script> 
+    <script>
+        let jogador = "X";
+        let podeJogar = true;
+
+        let cx1 = document.getElementById('cx1');
+        let cx2 = document.getElementById('cx2');
+        let cx3 = document.getElementById('cx3');
+        let cx4 = document.getElementById('cx4');
+        let cx5 = document.getElementById('cx5');
+        let cx6 = document.getElementById('cx6');
+        let cx7 = document.getElementById('cx7');
+        let cx8 = document.getElementById('cx8');
+        let cx9 = document.getElementById('cx9');
+
+        function mudarElemento(caixa) {
+            let cx = document.getElementById(caixa);
+
+            if (cx.innerHTML.trim() == "" && podeJogar) {
+                cx.innerHTML = jogador;
+                if (ganhou() == false) {
+                    if (tabuleiroCheio() == false) {
+                        mudarJogador();
+                    }
+                }
+            }
+        }
+
+        function mudarJogador() {
+            if (jogador == 'X') {
+                jogador = "O";
+            } else {
+                jogador = "X";
+            }
+        }
+
+        function ganhou() {
+            if (cx1.innerHTML.trim() != ""
+                && cx1.innerHTML.trim() == cx2.innerHTML.trim()
+                && cx2.innerHTML.trim() == cx3.innerHTML.trim()) {
+                // 1 linha
+                podeJogar = false;
+                cx1.classList.add('ganhou');
+                cx2.classList.add('ganhou');
+                cx3.classList.add('ganhou');
+
+                return true;
+            }
+
+            return false;
+        }
+
+        function tabuleiroCheio() {
+            if (cx1.innerHTML.trim() != ""
+                && cx2.innerHTML.trim() != "" 
+                && cx3.innerHTML.trim() != "" 
+                && cx4.innerHTML.trim() != "" 
+                && cx5.innerHTML.trim() != "" 
+                && cx6.innerHTML.trim() != "" 
+                && cx7.innerHTML.trim() != "" 
+                && cx8.innerHTML.trim() != "" 
+                && cx9.innerHTML.trim() != "" 
+                ) {
+                    podeJogar = false;
+                    cx1.classList.add('tabuleirocheio');
+                    cx2.classList.add('tabuleirocheio');
+                    cx3.classList.add('tabuleirocheio');
+                    cx4.classList.add('tabuleirocheio');
+                    cx5.classList.add('tabuleirocheio');
+                    cx6.classList.add('tabuleirocheio');
+                    cx7.classList.add('tabuleirocheio');
+                    cx8.classList.add('tabuleirocheio');
+                    cx9.classList.add('tabuleirocheio');
+                    return true;
+            }
+            return false;
+        }
+
+    </script>
 </body>
 </html>

@@ -69,8 +69,31 @@ header .navbar {
     padding-top: 25px;
     border-radius:  20px;
     cursor: pointer;
-}
+    /* Firefox */
+    -moz-transition: all 1s ease-in;
+    /* WebKit */
+    -webkit-transition: all 1s ease-in;
+    /* Opera */
+    -o-transition: all 1s ease-in;
+    /* Standard */
+    transition: all 1s ease-in;
 
+    /** prevenir select com duplo clique */
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */    
+}
+.caixa-jogo-galo:hover {
+    background: #999;
+}
+.caixa-jogo-galo.ganhou {
+    background: #000; color: #fff;
+}
+.caixa-jogo-galo.tabuleirocheio {
+    background: #c00; color: #fff;
+}
 
 .footer {   
     /*border: 1px solid #00f;*/
